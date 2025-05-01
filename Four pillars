@@ -1,0 +1,84 @@
+# Task 1: Rectangle and Square with calculate_perimeter method
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def calculate_perimeter(self):
+        return 2 * (self.width + self.height)
+
+class Square:
+    def __init__(self, side):
+        self.side = side
+
+    def calculate_perimeter(self):
+        return 4 * self.side
+
+# Create objects and call the method
+rect = Rectangle(4, 5)
+sq = Square(3)
+
+print("Rectangle perimeter:", rect.calculate_perimeter())
+print("Square perimeter:", sq.calculate_perimeter())
+
+# Task 2: change_size method for Square
+class Square:
+    def __init__(self, side):
+        self.side = side
+
+    def calculate_perimeter(self):
+        return 4 * self.side
+
+    def change_size(self, value):
+        self.side += value
+
+# Test change_size
+sq = Square(3)
+sq.change_size(2)
+print("New square perimeter:", sq.calculate_perimeter())
+
+# Task 3: Inherit from Shape
+class Shape:
+    def what_am_i(self):
+        print("I am a shape")
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def calculate_perimeter(self):
+        return 2 * (self.width + self.height)
+
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side
+
+    def calculate_perimeter(self):
+        return 4 * self.side
+
+    def change_size(self, value):
+        self.side += value
+
+# Create objects and call what_am_i
+rect = Rectangle(4, 5)
+sq = Square(3)
+
+rect.what_am_i()
+sq.what_am_i()
+
+# Task 4: Horse and Rider with composition
+class Rider:
+    def __init__(self, name):
+        self.name = name
+
+class Horse:
+    def __init__(self, name, rider):
+        self.name = name
+        self.rider = rider
+
+# Create a horse with a rider
+rider = Rider("John")
+horse = Horse("Lightning", rider)
+
+print(f"The horse {horse.name} is ridden by {horse.rider.name}")

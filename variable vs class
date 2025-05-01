@@ -1,0 +1,25 @@
+# Task 1 and 2: Square class with class variable and custom print behavior
+class Square:
+    square_list = []  # Class variable to hold all square objects
+
+    def __init__(self, side):
+        self.side = side
+        Square.square_list.append(self)  # Add new object to square_list
+
+    def __str__(self):
+        return f"{self.side} by {self.side} by {self.side} by {self.side}"
+
+# Create some squares and test
+s1 = Square(29)
+s2 = Square(15)
+
+print(s1)  # Output: 29 by 29 by 29 by 29
+print(Square.square_list)  # Output: List of square objects
+
+# Task 3: Function to check if two objects are the same
+def are_same_object(obj1, obj2):
+    return obj1 is obj2
+
+# Test the function
+print(are_same_object(s1, s1))  # True
+print(are_same_object(s1, s2))  # False

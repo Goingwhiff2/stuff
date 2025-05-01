@@ -1,0 +1,50 @@
+import math
+
+# 1. Apple class with four attributes
+class Apple:
+    def __init__(self, color, size, variety, weight):
+        self.color = color
+        self.size = size
+        self.variety = variety
+        self.weight = weight
+
+# Example usage
+apple1 = Apple("Red", "Medium", "Fuji", 150)
+print(f"Apple -> Color: {apple1.color}, Size: {apple1.size}, Variety: {apple1.variety}, Weight: {apple1.weight}g")
+
+# 2. Circle class with area method
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+# Example usage
+circle = Circle(5)
+print("Circle area:", circle.area())
+
+# 3. Triangle class with area method
+class Triangle:
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def area(self):
+        return 0.5 * self.base * self.height
+
+# Example usage
+triangle = Triangle(10, 6)
+print("Triangle area:", triangle.area())
+
+# 4. Hexagon class with calculate_perimeter method
+class Hexagon:
+    def __init__(self, side_length):
+        self.side_length = side_length
+
+    def calculate_perimeter(self):
+        return 6 * self.side_length
+
+# Example usage
+hexagon = Hexagon(4)
+print("Hexagon perimeter:", hexagon.calculate_perimeter())
