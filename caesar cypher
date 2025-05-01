@@ -1,0 +1,23 @@
+# Caesar Cipher Brute Force Cracker
+
+SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+
+def caesar_brute_force(message):
+    for key in range(len(SYMBOLS)):
+        translated = ''
+
+        for symbol in message:
+            if symbol in SYMBOLS:
+                symbol_index = SYMBOLS.find(symbol)
+                translated_index = (symbol_index - key) % len(SYMBOLS)
+                translated += SYMBOLS[translated_index]
+            else:
+                translated += symbol  # character not in SYMBOLS is left as-is
+
+        print(f'Key #{key}: {translated}')
+
+# Example encrypted message (you can change this)
+encrypted_message = 'Xlmw mw xli tmgxyvi xs xli gsqtpiexw'
+
+# Run the brute force
+caesar_brute_force(encrypted_message)

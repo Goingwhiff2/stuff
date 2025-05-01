@@ -1,0 +1,34 @@
+import random
+
+# Word lists
+nouns = ['Athlete', 'Clown', 'Shovel', 'Robot']
+places = ['house', 'attic', 'school', 'basement']
+provinces = ['Ontario', 'BC', 'Alberta', 'Nova Scotia']
+when = ['later this year', 'soon', 'later today', 'right now']
+object_pronouns = ['her', 'him', 'them']
+possessive_pronouns = ['hers', 'his', 'theirs']
+personal_pronouns = ['She', 'he', 'they']
+
+# Sentence presets (each is a function)
+def preset1():
+    return f"You won’t believe what this {nouns[random.randint(0,3)]} found in a {places[random.randint(0,3)]}!"
+
+def preset2():
+    return f"{personal_pronouns[random.randint(0,2)]} moved to {provinces[random.randint(0,3)]} and what happened {when[random.randint(0,4)]} will shock you!"
+
+def preset3():
+    return f"This {nouns[random.randint(0,3)]} gave up everything for {object_pronouns[random.randint(0,2)]}!"
+
+def preset4():
+    return f"Why this {places[random.randint(0,3)]} holds the secret to {possessive_pronouns[random.randint(0,2)]} success!"
+
+def preset5():
+    return f"{personal_pronouns[random.randint(0,2)]} just exposed the truth about {provinces[random.randint(0,3)]} {when[random.randint(0,4)]}."
+
+# List of all preset functions
+presets = [preset1, preset2, preset3, preset4, preset5]
+
+# Generate random headlines
+def generate_headlines(num):
+    for _ in range(num):
+        print(random.choice(presets)())  # Randomly select one of the 5 presets
