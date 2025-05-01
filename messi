@@ -1,0 +1,42 @@
+import csv
+
+# Load CSV data into a list of dictionaries
+with open("lionel_messi.csv", newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    data = [row for row in reader]
+
+# Convert values to integers for calculations
+for row in data:
+    row["Gls"] = int(row["Gls"])
+    row["Ast"] = int(row["Ast"])
+
+# Task 1: Years Messi scored over 35 goals
+over_35_goals = [row["Season"] for row in data if row["Gls"] > 35]
+
+# Task 2: Years Messi had over 11 assists
+over_11_assists = [row["Season"] for row in data if row["Ast"] > 11]
+
+# Task 3: Total career goals
+total_goals = sum(row["Gls"] for row in data)
+
+# Task 4: Total career points (goals + assists)
+total_points = sum(row["Gls"] + row["Ast"] for row in data)
+
+# Task 5: T/F tuple and count of seasons with more than 50 points
+over_50_pts_tuple = tuple((row["Gls"] + row["Ast"]) > 50 for row in data)
+over_50_count = over_50_pts_tuple.count(True)
+
+# Task 6: Years with over 30 goals and total goals from those years
+over_30_goals_years = [row for row in data if row["Gls"] > 30]
+num_years_over_30_goals = len(over_30_goals_years)
+total_goals_over_30_years = sum(row["Gls"] for row in over_30_goals_years)
+
+# Print results
+print("1. Years Messi scored over 35 goals:", over_35_goals)
+print("2. Years Messi had over 11 assists:", over_11_assists)
+print("3. Total career goals:", total_goals)
+print("4. Total career points (goals + assists):", total_points)
+print("5. Over 50 points tuple:", over_50_pts_tuple)
+print("   Number of seasons over 50 points:", over_50_count)
+print("6. Number of years with over 30 goals:", num_years_over_30_goals)
+print("   Total goals in those years:", total_goals_over_30_years)
