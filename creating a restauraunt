@@ -1,0 +1,103 @@
+import time
+
+class Employee:
+    def __init__(self, name, age, emp_id, hours_worked):
+        self.name = name
+        self.age = age
+        self.emp_id = emp_id
+        self.hours_worked = hours_worked
+
+    def clock_in(self):
+        print(self.name, "clocked in at", time.strftime('%I:%M:%S'))
+
+    def clock_out(self):
+        print(self.name, "clocked out at", time.strftime('%I:%M:%S'))
+
+    def calculate_wage(self):
+        return self.hours_worked * 15
+
+    def who_am_i(self):
+        print("I am an employee")
+
+
+class Waitress:
+    def __init__(self, name, age, emp_id, hours_worked, customers_served):
+        self.name = name
+        self.age = age
+        self.emp_id = emp_id
+        self.hours_worked = hours_worked
+        self.customers_served = customers_served
+
+    def clock_in(self):
+        print(self.name, "clocked in at", time.strftime('%I:%M:%S'))
+
+    def clock_out(self):
+        print(self.name, "clocked out at", time.strftime('%I:%M:%S'))
+
+    def calculate_wage(self):
+        return self.hours_worked * 9 + self.customers_served * 5
+
+    def who_am_i(self):
+        print("I am a waitress")
+
+
+class Cashier:
+    def __init__(self, name, age, emp_id, hours_worked, customers_served):
+        self.name = name
+        self.age = age
+        self.emp_id = emp_id
+        self.hours_worked = hours_worked
+        self.customers_served = customers_served
+
+    def calculate_wage(self):
+        return self.hours_worked * 15
+
+    def who_am_i(self):
+        print("I am a cashier")
+
+    def customers_served_info(self):
+        print(self.name, "the cashier served", self.customers_served, "customers")
+
+    def show_info(self):
+        print("CASHIER (" + self.name + ", " + self.emp_id + ")")
+
+
+class Customer:
+    customer_data = {}
+
+    def __init__(self, name, order, price):
+        self.name = name
+        self.order = order
+        self.price = price
+        Customer.customer_data[self.name] = (self.order, self.price)
+
+    def who_am_i(self):
+        print("I am a customer")
+
+
+
+emp1 = Employee("John", 30, "E101", 8)
+emp2 = Employee("Anna", 25, "E102", 6)
+
+print(emp1.name, "earned $", emp1.calculate_wage())
+print(emp2.name, "earned $", emp2.calculate_wage())
+
+cust1 = Customer("Tom", "Burger", 10)
+cust2 = Customer("Lucy", "Pizza", 12)
+cust3 = Customer("Sam", "Pasta", 15)
+
+print("\nCustomer Orders:")
+print(Customer.customer_data)
+
+cust1.who_am_i()
+
+waitress = Waitress("Emily", 22, "W201", 7, 10)
+waitress.clock_in()
+waitress.clock_out()
+print("Waitress wage: $", waitress.calculate_wage())
+waitress.who_am_i()
+
+cashier = Cashier("Suzy", 28, "C301", 8, 20)
+cashier.customers_served_info()
+cashier.show_info()
+cashier.who_am_i()
